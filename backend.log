@@ -1,0 +1,29 @@
+2025-11-05 15:18:26,509 - aicad.src.tools.base - [32mINFO[0m - Registered tool: geometry_utils
+2025-11-05 15:18:26,509 - aicad.src.tools.base - [32mINFO[0m - Registered tool: spatial_reasoning
+2025-11-05 15:18:26,509 - aicad.src.tools.base - [32mINFO[0m - Registered tool: design_rules
+OpenAI compatible API not configured. AI features will be limited.
+/home/ishanp/Documents/GitHub/AI-CAD/backend/src/main.py:693: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/ishanp/Documents/GitHub/AI-CAD/backend/src/main.py:705: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [1554396]
+INFO:     Waiting for application startup.
+2025-11-05 15:18:26,777 - aicad.src.main - [32mINFO[0m - AI-CAD API starting up...
+2025-11-05 15:18:26,777 - aicad.src.main - [32mINFO[0m - AI-CAD API startup complete
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8100 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-11-05 15:19:25,482 - aicad.src.main - [32mINFO[0m - AI-CAD API shutting down...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1554396]

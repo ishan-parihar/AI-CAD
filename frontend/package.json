@@ -1,0 +1,87 @@
+{
+  "name": "ai-cad-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@headlessui/react": "^2.2.0",
+    "@hookform/resolvers": "^5.2.2",
+    "@react-three/drei": "^10.7.6",
+    "@react-three/fiber": "^9.4.0",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.9",
+    "@tailwindcss/postcss": "^4.1.16",
+    "@tailwindcss/typography": "^0.5.15",
+    "@tanstack/react-query": "^5.62.0",
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.7.7",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "dxf-parser": "^1.1.2",
+    "fabric": "^6.7.1",
+    "framer-motion": "^12.23.24",
+    "konva": "^10.0.8",
+    "lucide-react": "^0.552.0",
+    "next": "^16.0.1",
+    "postcss": "^8.4.49",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
+    "react-konva": "^19.2.0",
+    "socket.io-client": "^4.8.1",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.0.0",
+    "three": "^0.181.0",
+    "typescript": "^5.7.2",
+    "zod": "^4.1.12",
+    "zustand": "^5.0.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/react-hooks": "^8.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/fabric": "^5.3.10",
+    "@types/three": "^0.181.0",
+    "@typescript-eslint/eslint-plugin": "^8.15.0",
+    "@typescript-eslint/parser": "^8.46.3",
+    "eslint": "^9.15.0",
+    "eslint-config-next": "^16.0.1",
+    "husky": "^9.1.7",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "jest-fail-on-console": "^3.1.1",
+    "lint-staged": "^16.2.6",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.7.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,md}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}
