@@ -7,7 +7,8 @@ import sys
 
 async def test_websocket_connection():
     """Test WebSocket connection to the backend"""
-    uri = "ws://localhost:8101/ws/plans/test-plan-123"
+    plan_id = "471bfe76-0102-4317-ad0b-8634d75cec43"  # Real plan ID from logs
+    uri = f"ws://localhost:8100/ws/plans/{plan_id}"
     
     try:
         print(f"Connecting to WebSocket: {uri}")
@@ -58,7 +59,7 @@ async def test_http_endpoints():
     """Test HTTP endpoints first"""
     import aiohttp
     
-    base_url = "http://localhost:8101"
+    base_url = "http://localhost:8100"
     
     try:
         async with aiohttp.ClientSession() as session:

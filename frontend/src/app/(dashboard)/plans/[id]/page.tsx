@@ -88,10 +88,17 @@ export default function PlanDetailPage() {
   
   // Update plan status from WebSocket
   useEffect(() => {
-    if (wsStatus && plan) {
-      setPlan(prev => prev ? { ...prev, status: wsStatus, progress: wsProgress } : null)
+    if (wsStatus && plan && plan.status !== wsStatus) {
+      setPlan(prev => prev ? { ...prev, status: wsStatus } : null)
     }
-  }, [wsStatus, wsProgress, plan])
+  }, [wsStatus, plan?.status])
+
+  // Update plan progress from WebSocket
+  useEffect(() => {
+    if (wsProgress !== undefined && plan && plan.progress !== wsProgress) {
+      setPlan(prev => prev ? { ...prev, progress: wsProgress } : null)
+    }
+  }, [wsProgress, plan?.progress])
 
   const getStatusColor = (status: PlanStatus) => {
     switch (status) {
@@ -161,16 +168,12 @@ export default function PlanDetailPage() {
     
     setIsDownloading(true)
     try {
-      const response = await fetch(`/api/v1/plans/${plan.id}/download`)
-      if (!response.ok) {
-        throw new Error(`Download failed: ${response.statusText}`)
-      }
+      const blob = await apiClient.downloadPlan(plan.id, 'dxf')
       
-      const blob = await response.blob()
       const url = window.URL.createObjectURL(blob)
       const link = document.createElement('a')
       link.href = url
-      link.download = `${plan.name}.dxf`
+      link.download = `${plan.name.replace(/[^a-zA-Z0-9]/g, '_')}.dxf`
       document.body.appendChild(link)
       link.click()
       document.body.removeChild(link)

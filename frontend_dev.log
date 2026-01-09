@@ -1,0 +1,15 @@
+
+> ai-cad-frontend@0.1.0 dev
+> next dev
+
+   ▲ Next.js 16.0.1 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.13:3000
+   - Environments: .env.local
+   - Experiments (use with caution):
+     · optimizePackageImports
+
+ ✓ Starting...
+ ✓ Ready in 360ms
+ GET / 200 in 1680ms (compile: 1599ms, render: 81ms)
+[?25h

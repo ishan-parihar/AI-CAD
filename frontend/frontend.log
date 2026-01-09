@@ -2,19 +2,18 @@
 > ai-cad-frontend@0.1.0 dev
 > next dev
 
- ⚠ Port 3000 is in use by process 1328868, using available port 3001 instead.
    ▲ Next.js 16.0.1 (Turbopack)
-   - Local:        http://localhost:3001
-   - Network:      http://192.168.1.13:3001
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.13:3000
    - Environments: .env.local
    - Experiments (use with caution):
      · optimizePackageImports
 
  ✓ Starting...
- ✓ Ready in 384ms
- GET /dashboard 200 in 2.1s (compile: 1931ms, render: 153ms)
- GET /plans/new 200 in 327ms (compile: 311ms, render: 16ms)
- ✓ Compiled in 82ms
- ✓ Compiled in 106ms
- ✓ Compiled in 77ms
+ ✓ Ready in 1395ms
+ GET /dashboard 200 in 3.1s (compile: 3.0s, render: 150ms)
+ GET /dashboard 200 in 70ms (compile: 3ms, render: 68ms)
+ GET / 200 in 409ms (compile: 384ms, render: 25ms)
+ GET /dashboard 200 in 43ms (compile: 3ms, render: 41ms)
+ GET / 200 in 24ms (compile: 3ms, render: 22ms)
 [?25h

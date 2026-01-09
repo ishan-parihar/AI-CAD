@@ -65,11 +65,18 @@ export function usePlanWebSocket(planId: string): UseWebSocketReturn {
     if (!planId) return
     
     try {
-      // Determine WebSocket URL based on current environment
-      const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
-      const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
-      const wsHost = apiBaseUrl.replace(/^https?:\/\//, '')
-      const wsUrl = `${wsProtocol}//${wsHost}/ws/plans/${planId}`
+      // Use dedicated WebSocket URL if available, otherwise construct from API URL
+      const wsBaseUrl = process.env.NEXT_PUBLIC_WS_URL || null
+      let wsUrl: string
+      
+      if (wsBaseUrl) {
+        wsUrl = `${wsBaseUrl}/plans/${planId}`
+      } else {
+        const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+        const wsProtocol = apiBaseUrl.startsWith('https:') ? 'wss:' : 'ws:'
+        const wsHost = apiBaseUrl.replace(/^https?:\/\//, '')
+        wsUrl = `${wsProtocol}//${wsHost}/ws/plans/${planId}`
+      }
       
       console.log(`Attempting WebSocket connection to: ${wsUrl}`)
       

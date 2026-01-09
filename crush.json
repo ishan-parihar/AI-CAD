@@ -1,0 +1,49 @@
+{
+  "$schema": "https://charm.land/crush.json",
+    "mcp": {
+        "tavily": {
+        "disabled": false
+        },
+        "notion": {
+        "disabled": true
+        },
+        "supabase": {
+        "disabled": true
+        },
+        "github": {
+        "disabled": true
+        },
+        "firecrawl-mcp": {
+        "disabled": true
+        },
+        "sequentialthinking": {
+        "disabled": false
+        },
+        "context7": {
+        "disabled": false
+        },
+        "svelte": {
+        "disabled": true
+        },
+        "filesystem-with-morph": {
+        "disabled": true
+        },
+        "n8n-mcp": {
+        "disabled": true
+        }
+    },
+    "lsp": {
+    "python": {
+        "disabled": false
+    },
+    "typescript": {
+        "disabled": false
+    },
+    "javascript": {
+        "disabled": false
+    },
+    "svelte": {
+        "disabled": true
+    }
+  }
+}

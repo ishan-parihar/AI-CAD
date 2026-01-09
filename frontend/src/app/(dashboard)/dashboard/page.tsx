@@ -31,6 +31,7 @@ export default function DashboardPage() {
     totalArea: 0
   })
   const [error, setError] = useState<string | null>(null)
+  const [downloadingPlan, setDownloadingPlan] = useState<string | null>(null)
 
   // Fetch real data from API
   useEffect(() => {
@@ -63,7 +64,21 @@ export default function DashboardPage() {
         }
       } catch (err) {
         console.error('Failed to fetch dashboard data:', err)
-        setError('Failed to load dashboard data. Please try again.')
+        
+        // Provide specific error messages based on error type
+        let errorMessage = 'Failed to load dashboard data. Please try again.'
+        
+        if (err instanceof TypeError && err.message.includes('fetch')) {
+          errorMessage = 'Cannot connect to the backend server. Please ensure the backend service is running on port 8100.'
+        } else if (err instanceof Error && err.message.includes('404')) {
+          errorMessage = 'API endpoint not found. Please check the backend configuration.'
+        } else if (err instanceof Error && err.message.includes('500')) {
+          errorMessage = 'Server error occurred. Please try again later.'
+        } else if (err instanceof Error) {
+          errorMessage = `Dashboard loading failed: ${err.message}`
+        }
+        
+        setError(errorMessage)
       } finally {
         setIsLoading(false)
       }
@@ -106,6 +121,30 @@ export default function DashboardPage() {
       day: 'numeric',
       year: 'numeric'
     })
+  }
+
+  const handleDownload = async (planId: string, planName: string) => {
+    if (downloadingPlan === planId) return
+    
+    try {
+      setDownloadingPlan(planId)
+      const blob = await apiClient.downloadPlan(planId, 'dxf')
+      
+      // Create download link
+      const url = window.URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = `${planName.replace(/[^a-zA-Z0-9]/g, '_')}.dxf`
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      window.URL.revokeObjectURL(url)
+    } catch (error) {
+      console.error('Download failed:', error)
+      setError('Failed to download plan. Please try again.')
+    } finally {
+      setDownloadingPlan(null)
+    }
   }
 
   return (
@@ -228,7 +267,11 @@ export default function DashboardPage() {
               ) : (
                 <div className="space-y-4">
                   {plans.map((plan) => (
-                    <div key={plan.id} className="flex items-center space-x-4 p-4 border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <Link 
+                      key={plan.id} 
+                      href={`/plans/${plan.id}`}
+                      className="flex items-center space-x-4 p-4 border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors block"
+                    >
                       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                         <FileText className="w-6 h-6 text-blue-600" />
                       </div>
@@ -261,17 +304,35 @@ export default function DashboardPage() {
                         </div>
                       </div>
 
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center space-x-2" onClick={(e) => e.preventDefault()}>
                         {plan.status === 'completed' && (
-                          <Button variant="outline" size="sm">
+                          <Button 
+                            variant="outline" 
+                            size="sm"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              e.stopPropagation()
+                              handleDownload(plan.id, plan.name)
+                            }}
+                            disabled={downloadingPlan === plan.id}
+                          >
                             <Download className="w-4 h-4" />
                           </Button>
                         )}
-                        <Button variant="ghost" size="sm">
+                        <Button 
+                          variant="ghost" 
+                          size="sm"
+                          onClick={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            // TODO: Implement more options menu
+                            console.log('More options for plan:', plan.id)
+                          }}
+                        >
                           <MoreHorizontal className="w-4 h-4" />
                         </Button>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               )}

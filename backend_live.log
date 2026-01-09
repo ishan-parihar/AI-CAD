@@ -1,0 +1,33 @@
+INFO:     Will watch for changes in these directories: ['/home/ishanp/Documents/GitHub/AI-CAD/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [3199344] using WatchFiles
+2025-11-11 21:26:25,812 - aicad.src.tools.base - [32mINFO[0m - Registered tool: geometry_utils
+2025-11-11 21:26:25,813 - aicad.src.tools.base - [32mINFO[0m - Registered tool: spatial_reasoning
+2025-11-11 21:26:25,813 - aicad.src.tools.base - [32mINFO[0m - Registered tool: design_rules
+OpenAI compatible API not configured. AI features will be limited.
+INFO:     Started server process [3199348]
+INFO:     Waiting for application startup.
+2025-11-11 21:26:26,137 - aicad.src.main - [32mINFO[0m - AI-CAD API starting up...
+2025-11-11 21:26:26,137 - aicad.src.main - [32mINFO[0m - AI-CAD API startup complete
+INFO:     Application startup complete.
+INFO:     127.0.0.1:33884 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34748 - "GET /api/v1/plans?page=1&limit=20&sort=updated_at&order=desc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39366 - "GET /api/v1/plans?page=1&limit=20&sort=updated_at&order=desc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39840 - "GET /api/v1/plans/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:39844 - "GET /api/v1/plans/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:39860 - "GET /health HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39864 - "GET /api/health HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33290 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33304 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33316 - "GET /api/v1/plans HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33328 - "GET /api/v1/plans HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55048 - "GET /api/v1/plans HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57324 - "GET /api/v1/plans HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48854 - "GET /api/v1/plans HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48854 - "GET /api/v1/plans?page=1&limit=20 HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-11-12 02:34:57,621 - aicad.src.main - [32mINFO[0m - AI-CAD API shutting down...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3199348]
+INFO:     Stopping reloader process [3199344]
