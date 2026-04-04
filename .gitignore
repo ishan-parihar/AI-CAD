@@ -1,2 +1,8 @@
 /frontend/.next
 /frontend/node_modules
+
+# Runtime artifacts
+*.db
+*.log
+*.dxf
+crush.json
